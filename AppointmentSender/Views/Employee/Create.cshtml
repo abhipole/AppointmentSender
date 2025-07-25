@@ -1,0 +1,42 @@
+﻿@model AppointmentSender.Models.Employee
+
+@{
+    ViewData["Title"] = "Add New Employee";
+}
+
+<h2>Add New Employee</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CTC" class="control-label"></label>
+        <input asp-for="CTC" class="form-control" />
+        <span asp-validation-for="CTC" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Breakdown" class="control-label"></label>
+        <input asp-for="Breakdown" class="form-control" />
+        <span asp-validation-for="Breakdown" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

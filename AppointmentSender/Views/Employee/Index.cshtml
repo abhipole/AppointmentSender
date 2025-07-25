@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AppointmentSender.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h2>Employee List</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Employee</a>
+    <a asp-action="UploadExcel" class="btn btn-success ml-2">Upload Excel</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>CTC (₹)</th>
+            <th>Breakdown</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="4" class="text-center text-muted">No employees found.</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.Email</td>
+                    <td>@item.CTC.ToString("N2")</td>
+                    <td>@item.Breakdown</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
