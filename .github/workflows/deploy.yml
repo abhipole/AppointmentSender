@@ -1,0 +1,20 @@
+name: Deploy to Local Docker
+
+on:
+  push:
+    branches: [ master ]   # branch master 
+
+jobs:
+  deploy:
+    runs-on: self-hosted   #  Windows runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy with Docker Compose
+        shell: cmd
+        run: |
+          cd C:\AppointmentSender
+          docker compose down || echo "No running containers"
+          docker compose up -d
