@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppointmentSender.Services
 {
+//Testing
     public class AppointmentLetterService
     {
         private readonly SmtpEmailService _emailService;
